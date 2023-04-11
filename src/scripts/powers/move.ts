@@ -34,11 +34,11 @@ export class Move implements Power {
 
     // 移动
     if (cursors.left.isDown) {
-      player.setFlipX(true)
-      player.body.setAccelerationX(-ax - (velocity.x > 0 ? velocity.x * 2 : 0))
-    } else if (cursors.right.isDown) {
       player.setFlipX(false)
-      player.body.setAccelerationX(ax + (velocity.x < 0 ? -velocity.x * 2 : 0))
+      player.body.setAccelerationX(ax + (velocity.x > 0 ? velocity.x * 2 : 0))
+    } else if (cursors.right.isDown) {
+      player.setFlipX(true)
+      player.body.setAccelerationX(-ax - (velocity.x < 0 ? -velocity.x * 2 : 0))
     } else {
       if (Math.abs(velocity.x) < stopSpeed) {
         player.body.setVelocityX(0).setAcceleration(0, 0)
@@ -54,7 +54,7 @@ export class Move implements Power {
         player.anims.play('bend' + animSuffix, true)
         player.body.setVelocityX(0).setAcceleration(0, 0)
       } else {
-        if ((cursors.left.isDown && velocity.x > 0) || (cursors.right.isDown && velocity.x < 0)) {
+        if ((cursors.left.isDown && velocity.x < 0) || (cursors.right.isDown && velocity.x > 0)) {
           player.anims.play('turn' + animSuffix, true)
         } else {
           player.anims.play((Math.abs(velocity.x) >= 10 ? 'run' : 'stand') + animSuffix, true)

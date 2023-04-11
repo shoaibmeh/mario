@@ -17,6 +17,7 @@ type Config = {
  */
 export default class Player extends Phaser.GameObjects.Sprite {
   body: Phaser.Physics.Arcade.Body
+  
   /**
    * 能力管理
    */

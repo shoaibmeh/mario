@@ -5,11 +5,11 @@ export default {
   /**
    * 游戏结束时间（秒）
    */
-  playTime: 60 * 3,
+  playTime: 0,
   /**
    * 玩家生命数
    */
-  lives: 3,
+  lives: 1,
   /**
    * 玩家初始位置
    */

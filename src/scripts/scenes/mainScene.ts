@@ -82,6 +82,8 @@ export default class MainScene extends Phaser.Scene {
     }).on('die', () => {
       this.time.delayedCall(3000, () => {
         if (this.hud.getValue('lives') === 0) {
+          this.music = this.sound.add('sfx')
+          this.music.play({ loop: false })
           this.gameOver()
         } else {
           this.restartGame()
@@ -283,9 +285,9 @@ export default class MainScene extends Phaser.Scene {
   private restartGame(saveData = true) {
     const data = saveData
       ? {
-          coins: this.hud.getValue('coins'),
-          lives: this.hud.getValue('lives'),
-        }
+        coins: this.hud.getValue('coins'),
+        lives: this.hud.getValue('lives'),
+      }
       : {}
     container.clearInstances()
     this.scene.restart(data)
@@ -294,6 +296,7 @@ export default class MainScene extends Phaser.Scene {
   private gameOver() {
     if (window.confirm('GameOver!')) {
       this.restartGame(false)
+      this.music.stop()
     }
   }
 }

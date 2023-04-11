@@ -10,14 +10,14 @@ export default class CountDown extends Phaser.Events.EventEmitter {
   }
 
   start(time = 250) {
-    this.current = time
+    this.current = time;
     this.timedEvent?.remove()
     this.timedEvent = this.scene.time.addEvent({
       delay: this.delay,
       callback: () => {
-        this.current--
+        this.current++
         this.emit('interval', this.current)
-        if (this.current === 0) {
+        if (this.current === -1) {
           this.timedEvent.remove()
           this.emit('end', this.current)
         }
