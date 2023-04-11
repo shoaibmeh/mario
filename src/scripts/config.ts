@@ -9,7 +9,7 @@ export default {
   /**
    * 玩家生命数
    */
-  lives: 1,
+  lives: 3,
   /**
    * 玩家初始位置
    */
